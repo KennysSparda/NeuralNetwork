@@ -5,12 +5,12 @@ namespace NeuralNetwork {
         string name;
         int line, column;
         double[,] data;
-        Random rnd;
 
         public Matrix(string n, int lin, int col) {
             this.name = n;
             this.line = lin;
             this.column = col;
+            this.data = new double[this.line, this.column];
         }
 
         public string show() {
@@ -25,7 +25,6 @@ namespace NeuralNetwork {
         }
 
         public int make() {
-            this.data = new double[this.line, this.column];
             for(int i=0; i<this.line; i++) {
                 for(int j=0; j <this.column; j++) {
                     Console.Write("[{0} , {1}] <= ", i+1, j+1);
@@ -36,15 +35,15 @@ namespace NeuralNetwork {
         }
 
         public void randomize() {
-            this.rnd = new Random();
+            var random = new Random();
             for(int i=0; i<this.line; i++) {
                 for(int j=0; j<this.column; j++) {
-                    this.data[i, j] = rnd.Next(1, 10);
-                    Console.WriteLine("[{0}, {1}] = {2}", i+1, j+1, this.data[i,j] );
+                    var value = random.Next();
+                    this.data[i, j] = value;
+                    Console.WriteLine("[{0}, {1}] = {2}", i+1, j+1, this.data[i,j]);
                 }
             }
         }
-        
 
         public int add(Matrix A, Matrix B) {
             if(A.line == B.line && A.column == B.column) {

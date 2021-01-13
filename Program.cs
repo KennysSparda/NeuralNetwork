@@ -19,7 +19,8 @@ namespace NeuralNetwork
                 Console.WriteLine(C.show());
             if(D.add(B, C) == 0)
 	            Console.WriteLine(D.show());    */
-            NeuralNetwork nn = new NeuralNetwork(2, 3, 2);
+            NeuralNetwork neuralnetwork = new NeuralNetwork(2, 3, 2);
+	        neuralnetwork.init();
         }
     }
 }
