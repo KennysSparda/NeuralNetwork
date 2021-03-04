@@ -6,9 +6,12 @@ namespace NeuralNetwork
     {
         static void Main(string[] args)
         {
-            NeuralNetwork neuralnetwork = new NeuralNetwork(2, 3, 2);
-	        neuralnetwork.feedfoward(1);
+            double i=0;
+            NeuralNetwork neuralnetwork = new NeuralNetwork(3, 2, 3);
+            i = neuralnetwork.feedfoward(0.01);
+            
             neuralnetwork.print();
+            
         }
     }
 }

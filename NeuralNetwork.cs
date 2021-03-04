@@ -25,10 +25,10 @@ namespace NeuralNetwork {
             return 1 / ( 1 + Math.Exp(-z));
         }
 
-	    public void feedfoward(double input_value) {
+        public double feedfoward(double input_value) {
             this.input.set(input_value);
-            this.weigth_ih.randomize();
-            this.bias_ih.randomize();
+            this.weigth_ih.randomize(0,11);
+            this.bias_ih.randomize(0,4);
             this.prod1.mul(this.input, this.weigth_ih);
             this.prod1.add(this.prod1, this.bias_ih);
             for(int i=0; i<this.hide.line; i++) {
@@ -36,8 +36,8 @@ namespace NeuralNetwork {
                     this.hide.set_one(i, j, this.sigmoid(this.prod1.data[i,j]));
                 }
             }
-            this.weigth_ho.randomize();
-            this.bias_ho.randomize();
+            this.weigth_ho.randomize(0,11);
+            this.bias_ho.randomize(0,4);
             this.prod2.mul(this.hide, this.weigth_ho);
             this.prod2.add(this.prod2, this.bias_ho);
             for(int i=0; i<this.output.line; i++) {
@@ -45,11 +45,17 @@ namespace NeuralNetwork {
                     this.output.set_one(i, j, this.sigmoid(this.prod2.data[i,j]));
                 }
             }
+	          return this.output.data[0,0];
         }
 
         public void print() {
+	          Console.Clear();
             Console.WriteLine(this.input.show());
+            //Console.WriteLine(this.weigth_ih.show());
+            //Console.WriteLine(this.bias_ih.show());
             Console.WriteLine(this.hide.show());
+            //Console.WriteLine(this.weigth_ho.show());
+            //Console.WriteLine(this.bias_ho.show());
             Console.WriteLine(this.output.show());
         }
     }

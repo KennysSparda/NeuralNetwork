@@ -38,11 +38,11 @@ namespace NeuralNetwork {
             return 0;
         }
 
-        public int randomize() {
+        public int randomize(int min, int max) {
             var random = new Random();
             for(int i=0; i<this.line; i++) {
                 for(int j=0; j<this.column; j++) {
-                    var value = random.Next(1, 10);
+                    var value = random.Next(min, max);
                     this.data[i, j] = value;
                 }
             }
